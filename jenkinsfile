@@ -1,0 +1,33 @@
+pipeline {
+    agent { label 'docker_build' } 
+    environment {
+        DOCKERHUB_CREDENTIALS = credentials('docker_hub') 
+    }
+    stages {
+        stage('SCM') {
+            steps {
+                git 'https://github.com/Dnyaneshwrp/spring-petclinic.git'
+            }
+        }
+        stage('image_build') {
+            steps {
+                sh 'docker image build -t dnyaneshdoc/spc1 .'
+            }
+        }
+        stage('dockerhub_login') {
+            steps {
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+            }
+        }
+        stage('push to dockerhub') {
+            steps {
+                sh 'docker image push dnyaneshdoc/spc1'
+            }
+        }
+        stage('pull from dockerhub') {
+            steps {
+                sh 'docker pull dnyaneshdoc/spc:latest'
+            }
+        }
+    }
+}

@@ -1,0 +1,22 @@
+---
+apiVersion: v1
+kind: ReplicaSet
+metadata:
+  name: rspc
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: spc
+  template:
+    metadata:
+      labels:
+        app: spc
+    spec:
+      containers:
+      - name: spc
+        image: dnyaneshdoc/spc:latest
+        ports:
+          - ContainerPort: 8080
+            protocol: TCP
+     
