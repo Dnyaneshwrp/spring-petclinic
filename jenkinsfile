@@ -1,12 +1,13 @@
 pipeline {
-    agent { label 'docker_build' } 
+    agent { label 'k8s' } 
     environment {
         DOCKERHUB_CREDENTIALS = credentials('docker_hub') 
     }
+
     stages {
         stage('SCM') {
             steps {
-                git 'https://github.com/Dnyaneshwrp/spring-petclinic.git'
+                git branch: 'dev', url: 'https://github.com/Dnyaneshwrp/spring-petclinic.git'
             }
         }
         stage('image_build') {
@@ -24,9 +25,9 @@ pipeline {
                 sh 'docker image push dnyaneshdoc/spc1'
             }
         }
-        stage('pull from dockerhub') {
+        stage('create replica in k8s') {
             steps {
-                sh 'docker pull dnyaneshdoc/spc:latest'
+                sh 'kubectl apply -f k8s.yml'
             }
         }
     }
