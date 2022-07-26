@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: spc
-        image: dnyaneshdoc/spc:latest
+        image: dnyaneshdoc/spc1
         ports:
           - containerPort: 8080
             protocol: TCP
