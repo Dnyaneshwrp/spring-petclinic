@@ -48,7 +48,7 @@ resource "aws_codebuild_project" "example" {
 
   source {
     type            = "GITHUB"
-    location        = "https://github.com/Dnyaneshwrp/game-of-life.git"
+    location        = "https://github.com/Dnyaneshwrp/spring-petclinic.git"
     buildspec       = file("./buildspec.yaml")
     git_clone_depth = 1
 
