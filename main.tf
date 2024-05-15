@@ -55,7 +55,7 @@ resource "aws_codebuild_project" "example" {
      
   }
 
-  source_version = "tf"
+  source_version = "dev"
 
   tags = {
     Environment = "Test"
