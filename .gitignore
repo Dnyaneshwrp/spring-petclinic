@@ -15,3 +15,13 @@ build/*
 _site/
 *.css
 !petclinic.css
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
