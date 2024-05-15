@@ -9,4 +9,4 @@ phases:
       - java --version
   build:
     commands:
-      - mvn clean package
+      - mvn package
