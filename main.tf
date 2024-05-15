@@ -21,7 +21,7 @@ resource "aws_codebuild_project" "example" {
   name          = "test-project"
   description   = "test_codebuild_project"
   build_timeout = 5
-  service_role  = "arn:aws:iam::654654465867:role/myrolecodebuild"
+  service_role  = "arn:aws:iam::654654465867:role/service-role/codebuild-my-service-role"
 
   artifacts {
     type = "NO_ARTIFACTS"
